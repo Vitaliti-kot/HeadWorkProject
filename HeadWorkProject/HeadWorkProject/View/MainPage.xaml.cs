@@ -1,5 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
+using Prism.Navigation;
+using System.Threading.Tasks;
 
 namespace HeadWorkProject.View
 {
@@ -76,9 +78,13 @@ namespace HeadWorkProject.View
             this.Content.BackgroundColor = Color.LightBlue;
             this.UpdateChildrenLayout();
         }
-        private void Tap_Tapped(object sender, EventArgs e)
+        private async void Tap_Tapped(object sender, EventArgs e)
         {
-            DisplayAlert(Title = "", message: "Неверный ввод данных...", cancel: "OK");
+            //NavigationPage page = new NavigationPage();
+            //await page.Navigation.PushAsync(new PageSignUp());
+            //DisplayAlert(Title = "", message: "Неверный ввод данных...", cancel: "OK");
+            // await service.NavigateAsync($"{nameof(PageSignUp)}");
+           // N
         }
 
 

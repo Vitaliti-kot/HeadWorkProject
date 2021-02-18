@@ -1,4 +1,5 @@
-﻿using HeadWorkProject.View;
+﻿using HeadWorkProject.Srvices.Setings;
+using HeadWorkProject.View;
 using HeadWorkProject.ViewModel;
 using Prism.Ioc;
 using Prism.Unity;
@@ -25,8 +26,11 @@ namespace HeadWorkProject
         }
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterInstance<ISettingsManager>(Container.Resolve<SettingsManager>());
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<PageSignUp>();
+
         }
         protected override void OnInitialized()
         {
