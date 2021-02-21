@@ -1,17 +1,17 @@
-﻿using HeadWorkProject.Srvices.Setings;
-using HeadWorkProject.View;
+﻿using HeadWorkProject.View;
 using HeadWorkProject.ViewModel;
+using Prism;
 using Prism.Ioc;
-using Prism.Unity;
 using Xamarin.Forms;
 
 namespace HeadWorkProject
 {
-    public partial class App : PrismApplication
+    public partial class App
     {
-        public App()
+        public App() : this(null)
         {
         }
+        public App(IPlatformInitializer initializer) : base(initializer) { }
         #region --- Overrides---
         protected override void OnStart()
         {
@@ -26,17 +26,17 @@ namespace HeadWorkProject
         }
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterInstance<ISettingsManager>(Container.Resolve<SettingsManager>());
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
-            containerRegistry.RegisterForNavigation<PageSignUp>();
+            containerRegistry.RegisterForNavigation<PageSignUp, PageSignUpViewModel>();
 
         }
-        protected override void OnInitialized()
+        protected override async void OnInitialized()
         {
             InitializeComponent();
-            NavigationService.NavigateAsync($"{nameof(MainPage)}");
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
         #endregion
+
     }
 }

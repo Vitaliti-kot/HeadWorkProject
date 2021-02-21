@@ -1,9 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HeadWorkProject.View.MainPage">
+<ContentPage    xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                xmlns:Custom="http://prismlibrary.com"
+                x:Class="HeadWorkProject.View.MainPage"
+                prism:ViewModelLocator.AutowireViewModel="True"
+                Title="{Binding Title}">
 
     <StackLayout>
-    </StackLayout>
+        <Label Text="Авторизация" HorizontalOptions="Center"/>
+        <Entry x:Name="entryLogin"  MaxLength="16"
+                FontSize ="15"
+                Placeholder = "введите логин"
+               TextChanged="EntryLogin_TextChanged"/>
+        <Entry  x:Name="entryPassword" IsPassword="true"
+                FontSize ="15"
+                Placeholder = "введите пароль"
+                MaxLength ="16"
+            TextChanged = "EntryPassword_TextChanged"/>
+        <Button  x:Name="buttonAutorization" Text = "Авторизоваться"
+                BackgroundColor="Blue"
+                TextColor ="Lime"
+                Opacity ="0.6"
+                AnchorY ="10"
+                IsEnabled ="False"
+                Clicked ="Button_Clicked"/>
+        <Label x:Name="buttonSignUp" Text="Зарегистрироваться" TextColor ="Blue"
+                TextDecorations ="Underline"
+                FontSize ="Large"
+                HorizontalTextAlignment ="Center">
+        </Label>
+        <Button x:Name="buttonSign" Command="{Binding NavigateCommand}" IsVisible="false"/>
 
+    </StackLayout>
+        
 </ContentPage>
