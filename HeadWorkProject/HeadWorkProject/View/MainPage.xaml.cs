@@ -5,8 +5,8 @@ namespace HeadWorkProject.View
 {
     public partial class MainPage : ContentPage
     {
-        Entry _entryLogin;
-        Entry _entryPassword;
+        string _entryLogin;
+        string _entryPassword;
         public MainPage()
         {
             InitializeComponent();
@@ -29,13 +29,13 @@ namespace HeadWorkProject.View
 
         private void EntryLogin_TextChanged(object sender, TextChangedEventArgs e)
         {
-            _entryLogin = entryLogin;
+            _entryLogin = entryLogin.Text;
             Enabled_Disabled_Button();
         }
 
         private void EntryPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
-            _entryPassword = entryPassword;
+            _entryPassword = entryPassword.Text;
             Enabled_Disabled_Button();
         }
 

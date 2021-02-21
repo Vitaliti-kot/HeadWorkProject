@@ -29,7 +29,7 @@ namespace HeadWorkProject
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<PageSignUp, PageSignUpViewModel>();
-
+            containerRegistry.RegisterForNavigation<MainList, MainListViewModel>();
         }
         protected override async void OnInitialized()
         {

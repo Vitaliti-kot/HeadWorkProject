@@ -5,10 +5,10 @@
                 xmlns:Custom="http://prismlibrary.com"
                 x:Class="HeadWorkProject.View.MainPage"
                 prism:ViewModelLocator.AutowireViewModel="True"
-                Title="{Binding Title}">
-
-    <StackLayout>
-        <Label Text="Авторизация" HorizontalOptions="Center"/>
+                Title="Авторизация"
+                BackgroundColor="#51B6FD">
+    
+    <StackLayout VerticalOptions="CenterAndExpand" Margin="20" BackgroundColor="#51B6FD">
         <Entry x:Name="entryLogin"  MaxLength="16"
                 FontSize ="15"
                 Placeholder = "введите логин"
@@ -20,9 +20,8 @@
             TextChanged = "EntryPassword_TextChanged"/>
         <Button  x:Name="buttonAutorization" Text = "Авторизоваться"
                 BackgroundColor="Blue"
-                TextColor ="Lime"
-                Opacity ="0.6"
-                AnchorY ="10"
+                TextColor ="White"
+                Opacity ="0.4"
                 IsEnabled ="False"
                 Clicked ="Button_Clicked"/>
         <Label x:Name="buttonSignUp" Text="Зарегистрироваться" TextColor ="Blue"
