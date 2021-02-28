@@ -8,22 +8,25 @@
                 Title="Авторизация"
                 BackgroundColor="#51B6FD">
     
-    <StackLayout VerticalOptions="CenterAndExpand" Margin="20" BackgroundColor="#51B6FD">
+    <StackLayout VerticalOptions="CenterAndExpand" Margin="20" Visual="Default" >
         <Entry x:Name="entryLogin"  MaxLength="16"
                 FontSize ="15"
-                Placeholder = "введите логин"
-               TextChanged="EntryLogin_TextChanged"/>
+               Text="{Binding Login}"
+               Placeholder="введите логин"
+               TextChanged="EntryLogin_TextChanged"
+               ClearButtonVisibility="WhileEditing"/>
         <Entry  x:Name="entryPassword" IsPassword="true"
                 FontSize ="15"
+                Text="{Binding Password}"
                 Placeholder = "введите пароль"
                 MaxLength ="16"
-            TextChanged = "EntryPassword_TextChanged"/>
+            TextChanged = "EntryPassword_TextChanged" ClearButtonVisibility="WhileEditing"/>
         <Button  x:Name="buttonAutorization" Text = "Авторизоваться"
                 BackgroundColor="Blue"
                 TextColor ="White"
-                Opacity ="0.4"
                 IsEnabled ="False"
-                Clicked ="Button_Clicked"/>
+                 Command="{Binding ButtonLogin}" CornerRadius="10"
+                 />
         <Label x:Name="buttonSignUp" Text="Зарегистрироваться" TextColor ="Blue"
                 TextDecorations ="Underline"
                 FontSize ="Large"

@@ -1,4 +1,5 @@
-﻿using HeadWorkProject.View;
+﻿using HeadWorkProject.Srvices.Repository;
+using HeadWorkProject.View;
 using HeadWorkProject.ViewModel;
 using Prism;
 using Prism.Ioc;
@@ -29,12 +30,13 @@ namespace HeadWorkProject
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<PageSignUp, PageSignUpViewModel>();
+            containerRegistry.RegisterInstance<IRepository>(Container.Resolve<Repository>());
             containerRegistry.RegisterForNavigation<MainList, MainListViewModel>();
         }
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("/NavigationPage/MainPage");
         }
         #endregion
 
