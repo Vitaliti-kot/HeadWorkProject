@@ -1,4 +1,6 @@
-﻿using HeadWorkProject.View;
+﻿using HeadWorkProject.Srvices.Repository;
+using HeadWorkProject.Srvices.Verification;
+using HeadWorkProject.View;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -12,6 +14,8 @@ namespace HeadWorkProject.ViewModel
     {
         private string _login="";
         private string _password="";
+        IRepository _repository;
+        ILoginValidation _validation;
         public string Login
         {
             get { return _login; }
@@ -36,9 +40,10 @@ namespace HeadWorkProject.ViewModel
 
         public ICommand ButtonLogin => new Command(TapButtonLogin);
 
-        private void TapButtonLogin(object obj)
+        public void TapButtonLogin(object obj)
         {
-            //throw new NotImplementedException();
+            _validation._repository = _repository;
+            var res = _validation.Success(Login, Password);
         }
 
         private DelegateCommand _navigateCommand;
@@ -52,7 +57,7 @@ namespace HeadWorkProject.ViewModel
 
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
-            Login = parameters.GetValue<string>(nameof(Login));
+          //  Login = parameters.GetValue<string>(nameof(Login));
 
         }
 
@@ -60,9 +65,11 @@ namespace HeadWorkProject.ViewModel
         {
             Login = parameters.GetValue<string>(nameof(Login));
         }
-        public MainPageViewModel(INavigationService navigationService)
+        public MainPageViewModel(INavigationService navigationService, IRepository repository, ILoginValidation validation)
         {
             _navigationService = navigationService;
+            _repository = repository;
+            _validation = validation;
         }
     }
 }

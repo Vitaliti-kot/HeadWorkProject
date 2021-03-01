@@ -1,4 +1,6 @@
-﻿using HeadWorkProject.Srvices.Repository;
+﻿using HeadWorkProject.Srvices;
+using HeadWorkProject.Srvices.Repository;
+using HeadWorkProject.Srvices.Verification;
 using HeadWorkProject.View;
 using HeadWorkProject.ViewModel;
 using Prism;
@@ -31,6 +33,8 @@ namespace HeadWorkProject
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<PageSignUp, PageSignUpViewModel>();
             containerRegistry.RegisterInstance<IRepository>(Container.Resolve<Repository>());
+            containerRegistry.RegisterInstance<INewUserVerification>(Container.Resolve<NewUserVerification>());
+            containerRegistry.RegisterInstance<ILoginValidation>(Container.Resolve<LoginValidation>());
             containerRegistry.RegisterForNavigation<MainList, MainListViewModel>();
         }
         protected override async void OnInitialized()
