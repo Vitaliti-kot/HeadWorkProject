@@ -10,8 +10,8 @@ namespace HeadWorkProject.ViewModel
 {
    public class MainPageViewModel : BindableBase, INavigationAware, IDestructible
     {
-        private string _login;
-        private string _password;
+        private string _login="";
+        private string _password="";
         public string Login
         {
             get { return _login; }
@@ -44,21 +44,21 @@ namespace HeadWorkProject.ViewModel
         private DelegateCommand _navigateCommand;
         public DelegateCommand NavigateCommand => _navigateCommand ?? (_navigateCommand = new DelegateCommand(ExecuteNavigateCommand));
 
-        private readonly INavigationService _navigationService;
-        async void ExecuteNavigateCommand()
+        private INavigationService _navigationService;
+        public async void ExecuteNavigateCommand()
         {
-          await _navigationService.NavigateAsync($"{nameof(PageSignUp)}");
+           await _navigationService.NavigateAsync($"{nameof(PageSignUp)}");
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
-            Login = parameters.GetValue<string>(nameof(_login));
+            Login = parameters.GetValue<string>(nameof(Login));
 
         }
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
-            Login = parameters.GetValue<string>(nameof(_login));
+            Login = parameters.GetValue<string>(nameof(Login));
         }
         public MainPageViewModel(INavigationService navigationService)
         {

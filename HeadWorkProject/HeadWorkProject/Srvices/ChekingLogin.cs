@@ -1,4 +1,5 @@
 ﻿using HeadWorkProject.Model;
+using HeadWorkProject.Srvices.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +8,7 @@ namespace HeadWorkProject.Srvices
 {
     public class ChekingLogin
     {
-
-        Users users = new Users();
+        Users users;
         char[] numbers = new char[]
         {
             '1','2','3','4','5','6','7','8','9','0'
@@ -21,6 +21,11 @@ namespace HeadWorkProject.Srvices
         {
             'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','S','T','U','V','W','Q','R','Y','Z','X'
         };
+        public ChekingLogin(Users getUsers, IRepository repository)
+        {
+            users = new Users(repository);
+            users.AllUsers=getUsers.AllUsers;
+        }
         public string CheckLogin(string login)
         {
             if (login.IndexOfAny(numbers) == 0)

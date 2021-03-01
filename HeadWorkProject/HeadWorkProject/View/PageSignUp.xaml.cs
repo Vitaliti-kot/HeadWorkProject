@@ -7,9 +7,9 @@ namespace HeadWorkProject.View
     public partial class PageSignUp : ContentPage
 
     {
-        string _login = "";
-        string _password1 = "";
-        string _password2 = "";
+        string _login="";
+        string _password1="";
+        string _password2="";
         public PageSignUp()
         {
             InitializeComponent();

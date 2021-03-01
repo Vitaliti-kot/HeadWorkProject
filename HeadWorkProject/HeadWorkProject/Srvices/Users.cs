@@ -18,10 +18,6 @@ namespace HeadWorkProject.Srvices
             get => _users;
             set => SetProperty(ref _users, value);
         }
-        public Users()
-        {
-
-        }
         public Users(IRepository repository)
         {
             _repository = repository;
@@ -38,7 +34,7 @@ namespace HeadWorkProject.Srvices
             var newUser = new User();
             newUser.Login = login;
             newUser.Password = password;
-            var id = await _repository.InsertAsync<User>(newUser);
+            var id = await _repository.InsertAsync(newUser);
             newUser.Id = id;
             AllUsers.Add(newUser);
         }

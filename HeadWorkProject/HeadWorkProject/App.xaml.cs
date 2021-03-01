@@ -36,7 +36,7 @@ namespace HeadWorkProject
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("/NavigationPage/MainPage");
+            await NavigationService.NavigateAsync($"{nameof(MainPage)}");
         }
         #endregion
 
